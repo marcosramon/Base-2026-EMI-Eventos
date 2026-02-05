@@ -222,7 +222,7 @@
     <script type="module">
         // Importa as funções que você precisa do SDK (Versão 12.9.0)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-        import { getDatabase, ref, onValue, set, remove, get } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+        import { getDatabase, ref, onValue, set, remove, get, goOffline } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
         import { DATABASE_ALUNAS, BASES_CONFIG, COTAS, LIMITE_TOTAL_BASE } from './dados.js';
 
         // ============================================
@@ -283,7 +283,14 @@
         function saveInscricao(novaInscricao) {
             set(ref(db, 'inscricoes/' + novaInscricao.matricula), novaInscricao)
                 .then(() => {
-                    alert('Inscrição realizada com sucesso!');
+                    // 1. Mensagem de Sucesso
+                    alert('🎉 PARABÉNS! Inscrição confirmada na ' + BASES_CONFIG.find(b => b.id === novaInscricao.baseId).nome + '.\n\nClique em OK para liberar o sistema para suas colegas.');
+                    
+                    // 2. CORTA a conexão com o Firebase imediatamente
+                    goOffline(db);
+
+                    // 3. Manda a aluna para longe (liberando a vaga de conexão)
+                    window.location.href = "https://www.ifb.edu.br"; 
                 })
                 .catch((error) => {
                     alert('Erro ao salvar: ' + error.message);
@@ -561,6 +568,7 @@
 </body>
 
 </html>
+
 
 
 
