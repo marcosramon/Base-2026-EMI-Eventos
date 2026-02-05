@@ -70,6 +70,27 @@
         .status-error { background: #ffebee; color: var(--erro); border: 1px solid #ffcdd2; }
         .status-success { background: #e8f5e9; color: var(--sucesso); border: 1px solid #c8e6c9; }
         @media (max-width: 768px) { .container { padding: 1rem; } header h1 { font-size: 1.5rem; } .bases-grid { grid-template-columns: 1fr; } .btn { width: 100%; } }
+
+        /* ESTILO DO RODAPÉ */
+        .app-footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: auto; /* Isso empurra o rodapé para o final */
+            width: 100%;
+        }
+
+        /* AJUSTE PARA O RODAPÉ FICAR NO CHÃO */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        #login-screen, #student-screen, #admin-screen {
+            flex: 1; /* O conteúdo principal cresce para ocupar o espaço */
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -194,6 +215,9 @@
             </form>
         </div>
     </div>
+    <footer class="app-footer">
+        Feito com 💗 pelas docentes do EMI em Eventos
+    </footer>
 
     <script type="module">
         // Importa as funções que você precisa do SDK (Versão 12.9.0)
@@ -560,5 +584,6 @@
 </body>
 
 </html>
+
 
 
