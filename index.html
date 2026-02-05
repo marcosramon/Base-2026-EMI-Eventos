@@ -92,36 +92,39 @@
             width: 100%;
         }
 
-        /* --- CORES ALTERNADAS PARA AS BASES --- */
-        
-        /* A Base 1, 5, 9... continua Verde (Padrão original) */
+        /* --- CORES ALTERNADAS PARA OS CARTÕES --- */
 
-        /* A Base 2, 6, 10... será AZUL */
+        /* --- BASE 2, 6, 10... (AZUL) --- */
         .base-card:nth-child(4n+2) .card-header,
         .base-card:nth-child(4n+2) button {
             background-color: #2c5282 !important; /* Azul Profundo */
+            border-color: #2c5282 !important;     /* Garante a borda */
         }
         .base-card:nth-child(4n+2) button:hover {
-            background-color: #2a4365 !important;
+            background-color: #2a4365 !important; /* Azul mais escuro ao passar o mouse */
         }
 
-        /* A Base 3, 7, 11... será VINHO (Lembra o vermelho do IFB) */
+        /* --- BASE 3, 7, 11... (VINHO) --- */
         .base-card:nth-child(4n+3) .card-header,
         .base-card:nth-child(4n+3) button {
-            background-color: #9b2c2c !important; /* Vermelho Vinho */
+            background-color: #9b2c2c !important; /* Vinho */
+            border-color: #9b2c2c !important;
         }
         .base-card:nth-child(4n+3) button:hover {
-            background-color: #742a2a !important;
+            background-color: #742a2a !important; /* Vinho mais escuro */
         }
 
-        /* A Base 4, 8, 12... será ROXA/INDIGO */
+        /* --- BASE 4, 8, 12... (ROXO) --- */
         .base-card:nth-child(4n+4) .card-header,
         .base-card:nth-child(4n+4) button {
-            background-color: #553c9a !important; /* Roxo Sobrio */
+            background-color: #553c9a !important; /* Roxo */
+            border-color: #553c9a !important;
         }
         .base-card:nth-child(4n+4) button:hover {
-            background-color: #44337a !important;
+            background-color: #44337a !important; /* Roxo mais escuro */
         }
+
+        /* A Base 1, 5, 9... continuará verde, pois não tem regra específica para ela aqui */
     </style>
 </head>
 <body>
@@ -622,6 +625,7 @@
 </body>
 
 </html>
+
 
 
 
