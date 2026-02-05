@@ -395,12 +395,35 @@
 
         function updateUserStatus() {
              const inscricao = getInscricaoAtual();
+             
              if (inscricao) {
+                // CASO 1: ALUNA JÁ INSCRITA
                 const base = BASES_CONFIG.find(b => b.id === inscricao.baseId);
+                
                 document.getElementById('user-status').textContent = `✅ Inscrita na ${base.nome}`;
-                document.getElementById('selection-message').classList.remove('hidden');
-                document.getElementById('selection-message').innerHTML = `<div>Você já está inscrita na <strong>${base.nome}</strong>.<br><small>Fale com a coordenação se precisar alterar.</small></div>`;
+                const msgDiv = document.getElementById('selection-message');
+                msgDiv.classList.remove('hidden');
+                
+                // Mensagem com aviso do contador regressivo
+                msgDiv.innerHTML = `
+                    <div>
+                        Você já está confirmada na <strong>${base.nome}</strong>.
+                        <br><br>
+                        ⏳ <em>Para liberar o acesso das colegas, você será redirecionada em 10 segundos...</em>
+                    </div>
+                `;
+
+                // O "Ejetor" Automático
+                setTimeout(() => {
+                    // Corta conexão com o banco para liberar vaga (se der erro ignora)
+                    try { goOffline(db); } catch(e) {} 
+                    
+                    // Manda para o site do IFB
+                    window.location.href = "https://www.ifb.edu.br";
+                }, 10000); // 10 segundos
+
             } else {
+                // CASO 2: AINDA NÃO ESCOLHEU (Lógica normal)
                 document.getElementById('user-status').textContent = 'Selecione sua base abaixo';
                 document.getElementById('selection-message').classList.add('hidden');
             }
@@ -568,6 +591,7 @@
 </body>
 
 </html>
+
 
 
 
